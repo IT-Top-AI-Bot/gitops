@@ -15,7 +15,6 @@ spec:
       labels:
         { { - include "journal-service.selectorLabels" . | nindent 8 } }
       annotations:
-        # Рестарт пода при изменении ConfigMap
         checksum/config: { { include (print $.Template.BasePath "/configmap.yaml") . | sha256sum } }
     spec:
       { { - with .Values.imagePullSecrets } }
@@ -31,10 +30,8 @@ spec:
               containerPort: { { .Values.config.serverPort | int } }
               protocol: TCP
           envFrom:
-            # Нечувствительная конфигурация
             - configMapRef:
                 name: { { include "journal-service.fullname" . } }-config
-            # Секреты из Vault через External Secrets
             - secretRef:
             name: { { include "journal-service.fullname" . } }-secrets
           livenessProbe:
