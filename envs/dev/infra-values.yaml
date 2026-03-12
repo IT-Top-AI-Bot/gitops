@@ -1,0 +1,5 @@
+vault:
+  address: "https://YOUR_VAULT_ADDRESS"
+  mountPath: "secret"         # KV v2 mount point
+  kubernetesMountPath: "kubernetes"  # Vault Kubernetes auth mount
+  role: "dev-role"

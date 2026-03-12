@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/YOUR_ORG/journal-service
+  pullPolicy: Always
+  tag: "latest"      # CI будет обновлять это значение при деплое
+
+ingress:
+  enabled: true
+  className: "traefik"
+  host: "journal-dev.YOUR_DOMAIN"
+  tls: false
+
+config:
+  springProfile: "dev"
+  redis:
+    host: "redis-master.dev.svc.cluster.local"
+    port: "6379"
+  journal:
+    baseUrl: "https://YOUR_JOURNAL_API_URL"
+    syncInterval: "3600000"
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512Mi"
+  limits:
+    cpu: "500m"
+    memory: "1Gi"
