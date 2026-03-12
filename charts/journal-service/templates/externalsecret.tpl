@@ -46,61 +46,61 @@ spec:
   data:
     - secretKey: db_host
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: DATABASE_HOST
     - secretKey: db_port
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: DATABASE_PORT
     - secretKey: db_name
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: DATABASE_NAME
     - secretKey: db_username
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: DATABASE_USERNAME
     - secretKey: db_password
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: DATABASE_PASSWORD
     - secretKey: s3_endpoint
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: S3_ENDPOINT
     - secretKey: s3_region
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: S3_REGION
     - secretKey: s3_access_key
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: S3_ACCESS_KEY
     - secretKey: s3_secret_key
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: S3_SECRET_KEY
     - secretKey: kafka_bootstrap_servers
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: KAFKA_BOOTSTRAP_SERVERS
     - secretKey: redis_host
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: REDIS_HOST
     - secretKey: redis_port
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: REDIS_PORT
     - secretKey: redis_password
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: REDIS_PASSWORD
     - secretKey: eureka_server_url
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: EUREKA_SERVER_URL
     - secretKey: encryption_key
       remoteRef:
-        key: secret/journal-service/dev
+        key: {{ .Values.vault.secretPath }}
         property: ENCRYPTION_KEY
