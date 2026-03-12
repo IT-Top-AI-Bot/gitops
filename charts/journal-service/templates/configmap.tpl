@@ -8,7 +8,5 @@ metadata:
 data:
   SPRING_PROFILES_ACTIVE: {{ .Values.config.springProfile | quote }}
   SERVER_PORT: {{ .Values.config.serverPort | quote }}
-  SPRING_DATA_REDIS_HOST: {{ .Values.config.redis.host | quote }}
-  SPRING_DATA_REDIS_PORT: {{ .Values.config.redis.port | quote }}
   JOURNAL_BASE_URL: {{ .Values.config.journal.baseUrl | quote }}
   JOURNAL_SYNC_INTERVAL: {{ .Values.config.journal.syncInterval | quote }}
