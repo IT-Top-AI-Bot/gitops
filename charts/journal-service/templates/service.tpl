@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "journal-service.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "journal-service.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "journal-service.selectorLabels" . | nindent 4 }}

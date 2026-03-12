@@ -1,0 +1,5 @@
+vault:
+  address: ""
+  mountPath: "secret"
+  kubernetesMountPath: "kubernetes"
+  role: ""

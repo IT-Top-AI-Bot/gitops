@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-secrets
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    vault.hashicorp.com/role: {{ .Values.vault.role | quote }}
