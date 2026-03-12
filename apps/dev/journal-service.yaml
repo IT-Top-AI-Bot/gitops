@@ -15,7 +15,7 @@ spec:
     path: charts/journal-service
     helm:
       valueFiles:
-        - ../../../envs/dev/journal-service-values.yaml
+        - ../../envs/dev/journal-service-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: dev

@@ -13,7 +13,7 @@ spec:
     path: charts/dev-infra
     helm:
       valueFiles:
-        - ../../../envs/dev/infra-values.yaml
+        - ../../envs/dev/infra-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
