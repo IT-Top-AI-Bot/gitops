@@ -12,11 +12,11 @@ service:
   type: ClusterIP
   port: 8080
 
-#ingress:
-#  enabled: true
-#  className: "traefik"   # k3s default ingress
-#  host: "journal.YOUR_DOMAIN"
-#  tls: false
+ingress:
+  enabled: false
+  className: "traefik"
+  host: ""
+  tls: false
 
 resources:
   requests:
