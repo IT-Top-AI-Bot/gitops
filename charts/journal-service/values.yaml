@@ -23,18 +23,15 @@ resources:
     cpu: "250m"
     memory: "512Mi"
   limits:
-    cpu: "500m"
-    memory: "1Gi"
+    cpu: "1000m"
+    memory: "2Gi"
 
 # Нечувствительная конфигурация приложения
 config:
   springProfile: "dev"
   serverPort: "8080"
-  redis:
-    host: "redis-master.dev.svc.cluster.local"
-    port: "6379"
   journal:
-    baseUrl: "https://YOUR_JOURNAL_API_URL"
+    baseUrl: "https://msapi.top-academy.ru/api/v2"
     syncInterval: "3600000"
 
 # Путь к секретам в Vault (KV v2 mount: secret)
