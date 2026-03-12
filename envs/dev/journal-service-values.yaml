@@ -1,15 +1,15 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/YOUR_ORG/journal-service
+  repository: ghcr.io/IT-Top-AI-Bot/journal-service
   pullPolicy: Always
   tag: "latest"      # CI будет обновлять это значение при деплое
 
-ingress:
-  enabled: true
-  className: "traefik"
-  host: "journal-dev.YOUR_DOMAIN"
-  tls: false
+#ingress:
+#  enabled: true
+#  className: "traefik"
+#  host: "journal-dev.YOUR_DOMAIN"
+#  tls: false
 
 config:
   springProfile: "dev"

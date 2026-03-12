@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/YOUR_ORG/journal-service
+  repository: ghcr.io/IT-Top-AI-Bot/journal-service
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -12,11 +12,11 @@ service:
   type: ClusterIP
   port: 8080
 
-ingress:
-  enabled: true
-  className: "traefik"   # k3s default ingress
-  host: "journal.YOUR_DOMAIN"
-  tls: false
+#ingress:
+#  enabled: true
+#  className: "traefik"   # k3s default ingress
+#  host: "journal.YOUR_DOMAIN"
+#  tls: false
 
 resources:
   requests:

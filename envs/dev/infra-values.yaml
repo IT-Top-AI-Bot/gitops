@@ -1,5 +1,5 @@
 vault:
-  address: "https://YOUR_VAULT_ADDRESS"
+  address: "https://vault.actimate.ru"
   mountPath: "secret"         # KV v2 mount point
   kubernetesMountPath: "kubernetes"  # Vault Kubernetes auth mount
   role: "dev-role"
