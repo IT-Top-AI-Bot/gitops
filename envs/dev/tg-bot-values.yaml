@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/it-top-ai-bot/tg-bot
   pullPolicy: Always
-  tag: "latest"
+  tag: "sha-181a96a"
 
 config:
   backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
