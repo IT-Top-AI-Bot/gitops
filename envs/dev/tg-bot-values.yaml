@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/it-top-ai-bot/tg-bot
+  pullPolicy: Always
+  tag: "latest"
+
+config:
+  backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
