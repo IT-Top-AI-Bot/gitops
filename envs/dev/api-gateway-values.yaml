@@ -7,9 +7,6 @@ image:
 
 ingress:
   enabled: false
-  className: "traefik"
-  host: "api-dev.YOUR_DOMAIN"
-  tls: false
 
 resources:
   requests:
