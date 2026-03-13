@@ -6,7 +6,7 @@ image:
   tag: "sha-475d9f6"
 
 ingress:
-  enabled: true
+  enabled: false
   className: "traefik"
   host: "api-dev.YOUR_DOMAIN"
   tls: false
