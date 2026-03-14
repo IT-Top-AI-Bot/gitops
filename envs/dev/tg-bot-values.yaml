@@ -5,8 +5,12 @@ image:
   pullPolicy: Always
   tag: "sha-4ffaf69"
 
+ingress:
+  enabled: false
+
 config:
   backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
+  webhookBaseUrl: "https://tg-bot-dev.actimate.ru"
 
 resources:
   requests:
