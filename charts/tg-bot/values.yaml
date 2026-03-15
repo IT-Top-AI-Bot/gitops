@@ -20,7 +20,7 @@ config:
   springProfile: "dev"
   serverPort: "8080"
   backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
-  webhookBaseUrl: ""
+  webhookHost: "https://tg-bot-dev.actimate.ru"
   proxyHost: ""
   proxyPort: "0"
 

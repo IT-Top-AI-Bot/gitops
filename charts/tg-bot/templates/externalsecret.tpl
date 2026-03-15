@@ -22,3 +22,8 @@ spec:
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: TELEGRAM_BOT_USERNAME
+    - secretKey: TELEGRAM_WEBHOOK_SECRET_TOKEN
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: TELEGRAM_WEBHOOK_SECRET_TOKEN
+
