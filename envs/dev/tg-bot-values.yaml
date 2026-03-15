@@ -10,7 +10,7 @@ ingress:
 
 config:
   backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
-  webhookBaseUrl: "https://tg-bot-dev.actimate.ru/bot"
+  webhookBaseUrl: "https://dev-bot.actimate.ru/bot"
   proxyHost: "192.168.0.148"
   proxyPort: "7890"
 
