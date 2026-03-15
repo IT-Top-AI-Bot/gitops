@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/it-top-ai-bot/tg-bot
   pullPolicy: Always
-  tag: "sha-813df01"
+  tag: "sha-0837271"
 
 ingress:
   enabled: false
