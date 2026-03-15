@@ -10,3 +10,5 @@ data:
   SERVER_PORT: {{ .Values.config.serverPort | quote }}
   BACKEND_BASE_URL: {{ .Values.config.backendBaseUrl | quote }}
   TELEGRAM_BOT_WEBHOOK_BASE_URL: {{ .Values.config.webhookBaseUrl | quote }}
+  PROXY_HOST: {{ .Values.config.proxyHost | quote }}
+  PROXY_PORT: {{ .Values.config.proxyPort | quote }}
