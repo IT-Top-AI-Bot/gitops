@@ -18,6 +18,10 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.tpl") . | sha256sum }}
     spec:
       serviceAccountName: {{ include "tg-bot.fullname" . }}
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -39,14 +43,14 @@ spec:
             httpGet:
               path: /actuator/health/liveness
               port: http
-            initialDelaySeconds: 30
+            initialDelaySeconds: 3
             periodSeconds: 15
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
               port: http
-            initialDelaySeconds: 15
+            initialDelaySeconds: 2
             periodSeconds: 10
             failureThreshold: 3
           resources:
