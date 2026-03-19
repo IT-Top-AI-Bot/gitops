@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/it-top-ai-bot/journal-service
   pullPolicy: Always
-  tag: "sha-14103d0"
+  tag: "sha-6f4416d"
 
 ingress:
   enabled: false
