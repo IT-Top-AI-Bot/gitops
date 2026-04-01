@@ -10,7 +10,7 @@ config:
     url: "http://admin-server-dev.dev.svc.cluster.local:8090"
     serviceBaseUrl: "http://config-server-dev.dev.svc.cluster.local:8888"
   otel:
-    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
+    endpoint: "http://192.168.0.160:4318"
 
 resources:
   requests:
