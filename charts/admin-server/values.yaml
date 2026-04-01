@@ -10,7 +10,7 @@ imagePullSecrets:
 
 service:
   type: ClusterIP
-  port: 8090
+  port: 8080
 
 ingress:
   enabled: false
@@ -26,7 +26,7 @@ resources:
     memory: "512Mi"
 
 config:
-  springProfile: "dev"
-  serverPort: "8090"
+  springProfile: "dev,kubernetes"
+  serverPort: "8080"
   otel:
     endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
