@@ -1,0 +1,40 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/it-top-ai-bot/config-server
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets:
+  - name: ghcr-credentials
+
+service:
+  type: ClusterIP
+  port: 8888
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    memory: "512Mi"
+
+# Нечувствительная конфигурация приложения
+config:
+  springProfile: "dev"
+  serverPort: "8888"
+  adminServer:
+    url: "http://admin-server-dev.dev.svc.cluster.local:8090"
+    serviceBaseUrl: "http://config-server-dev.dev.svc.cluster.local:8888"
+  otel:
+    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
+
+# Путь к секретам в Vault (KV v2 mount: secret)
+# Итоговый путь: secret/data/dev/config-server
+vault:
+  secretPath: "dev/config-server"
+
+# Имя SecretStore из dev-infra chart
+secretStore:
+  name: "vault-backend"
+  kind: "SecretStore"
