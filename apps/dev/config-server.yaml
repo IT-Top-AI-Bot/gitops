@@ -6,7 +6,6 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    # wave 1: деплоится раньше сервисов, которые зависят от config-server
     argocd.argoproj.io/sync-wave: "1"
     argocd-image-updater.argoproj.io/image-list: app=ghcr.io/it-top-ai-bot/config-server
     argocd-image-updater.argoproj.io/app.update-strategy: latest

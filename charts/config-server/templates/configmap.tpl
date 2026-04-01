@@ -8,7 +8,6 @@ metadata:
 data:
   SPRING_PROFILES_ACTIVE: {{ .Values.config.springProfile | quote }}
   SERVER_PORT: {{ .Values.config.serverPort | quote }}
-  # Spring Boot Admin — переопределяем hardcoded localhost из application.yaml
   SPRING_BOOT_ADMIN_CLIENT_URL: {{ .Values.config.adminServer.url | quote }}
   SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL: {{ .Values.config.adminServer.serviceBaseUrl | quote }}
   OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.config.otel.endpoint | quote }}

@@ -22,11 +22,3 @@ spec:
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: CONFIG_SERVER_PASSWORD
-    - secretKey: ADMIN_SERVER_USERNAME
-      remoteRef:
-        key: {{ .Values.vault.secretPath }}
-        property: ADMIN_SERVER_USERNAME
-    - secretKey: ADMIN_SERVER_PASSWORD
-      remoteRef:
-        key: {{ .Values.vault.secretPath }}
-        property: ADMIN_SERVER_PASSWORD

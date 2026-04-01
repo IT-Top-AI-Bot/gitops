@@ -19,7 +19,6 @@ resources:
   limits:
     memory: "512Mi"
 
-# Нечувствительная конфигурация приложения
 config:
   springProfile: "dev"
   serverPort: "8888"
@@ -29,12 +28,9 @@ config:
   otel:
     endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
 
-# Путь к секретам в Vault (KV v2 mount: secret)
-# Итоговый путь: secret/data/dev/config-server
 vault:
   secretPath: "dev/config-server"
 
-# Имя SecretStore из dev-infra chart
 secretStore:
   name: "vault-backend"
   kind: "SecretStore"
