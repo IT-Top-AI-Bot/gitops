@@ -26,13 +26,15 @@ connector:
   snapshotMode: initial
   heartbeatIntervalMs: "10000"
 
-  # Kafka offset storage (survives pod restarts)
-  offsetStorageTopic: debezium.offsets.journal.dev
 
 # Vault secret path for sensitive values:
 # DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 vault:
   secretPath: "dev/debezium"
+
+persistence:
+  size: 100Mi
+  storageClass: ""  # uses cluster default
 
 secretStore:
   name: "vault-backend"

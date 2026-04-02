@@ -22,6 +22,9 @@ spec:
         - name: config
           configMap:
             name: {{ include "debezium.fullname" . }}-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "debezium.fullname" . }}-data
       containers:
         - name: debezium
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -38,6 +41,8 @@ spec:
             - name: config
               mountPath: /debezium/config/application.properties
               subPath: application.properties
+            - name: data
+              mountPath: /debezium/data
           livenessProbe:
             httpGet:
               path: /q/health/live

@@ -6,7 +6,6 @@ connector:
   topicPrefix: journal
   tableIncludeList: "public.homework_execution"
   snapshotMode: initial
-  offsetStorageTopic: debezium.offsets.journal.dev
 
 vault:
   secretPath: "dev/debezium"
