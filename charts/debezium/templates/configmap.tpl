@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "debezium.labels" . | nindent 4 }}
 data:
-  # Debezium Server reads application.properties from /debezium/conf/
+  # Debezium Server reads application.properties from /debezium/config/
   # Sensitive values (DATABASE_HOST, DATABASE_PASSWORD, etc.) are injected
   # as env vars from the ExternalSecret and referenced here via ${VAR} syntax
   # (Quarkus MicroProfile Config supports env var substitution)

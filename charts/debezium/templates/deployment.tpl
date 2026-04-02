@@ -36,7 +36,7 @@ spec:
                 name: {{ include "debezium.fullname" . }}-secrets
           volumeMounts:
             - name: config
-              mountPath: /debezium/conf/application.properties
+              mountPath: /debezium/config/application.properties
               subPath: application.properties
           livenessProbe:
             httpGet:
