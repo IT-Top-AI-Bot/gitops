@@ -1,4 +1,4 @@
-kafkaBootstrapServers: "192.168.0.148:9092"
+kafkaBootstrapServers: "192.168.0.219:9092"
 
 connector:
   slotName: debezium_journal_dev
