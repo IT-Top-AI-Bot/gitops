@@ -1,0 +1,14 @@
+connector:
+  slotName: debezium_journal_dev
+  publicationName: debezium_journal_dev_pub
+  topicPrefix: journal
+  tableIncludeList: "public.homework_execution"
+  snapshotMode: initial
+  offsetStorageTopic: debezium.offsets.journal.dev
+
+vault:
+  secretPath: "dev/debezium"
+
+secretStore:
+  name: "vault-backend"
+  kind: "SecretStore"
