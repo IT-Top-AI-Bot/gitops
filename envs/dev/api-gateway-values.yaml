@@ -8,10 +8,16 @@ image:
 ingress:
   enabled: false
 
+config:
+  configServer:
+    host: "config-server-dev.dev.svc.cluster.local"
+    port: "8080"
+  otel:
+    endpoint: "http://192.168.0.160:4318"
+
 resources:
   requests:
     cpu: "100m"
     memory: "256Mi"
   limits:
-    cpu: "500m"
     memory: "512Mi"
