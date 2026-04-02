@@ -29,13 +29,13 @@ data:
     # --- Offset storage in Kafka (survives pod restarts) ---
     debezium.source.offset.storage=org.apache.kafka.connect.storage.KafkaOffsetBackingStore
     debezium.source.offset.storage.topic={{ .Values.connector.offsetStorageTopic }}
-    debezium.source.offset.storage.bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS}
+    debezium.source.offset.storage.bootstrap.servers={{ .Values.kafkaBootstrapServers }}
     debezium.source.offset.storage.partitions=1
     debezium.source.offset.storage.replication.factor=1
 
     # --- Sink: Kafka ---
     debezium.sink.type=kafka
-    debezium.sink.kafka.producer.bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS}
+    debezium.sink.kafka.producer.bootstrap.servers={{ .Values.kafkaBootstrapServers }}
     debezium.sink.kafka.producer.key.serializer=org.apache.kafka.common.serialization.StringSerializer
     debezium.sink.kafka.producer.value.serializer=org.apache.kafka.common.serialization.StringSerializer
 

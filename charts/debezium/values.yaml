@@ -12,6 +12,9 @@ resources:
   limits:
     memory: "512Mi"
 
+# Kafka bootstrap servers — not a secret, set directly per environment
+kafkaBootstrapServers: ""
+
 # Non-sensitive Debezium source config
 connector:
   # PostgreSQL source
@@ -27,8 +30,7 @@ connector:
   offsetStorageTopic: debezium.offsets.journal.dev
 
 # Vault secret path for sensitive values:
-# DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD,
-# KAFKA_BOOTSTRAP_SERVERS
+# DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 vault:
   secretPath: "dev/debezium"
 

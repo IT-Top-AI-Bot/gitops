@@ -34,7 +34,3 @@ spec:
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: DATABASE_PASSWORD
-    - secretKey: KAFKA_BOOTSTRAP_SERVERS
-      remoteRef:
-        key: {{ .Values.vault.secretPath }}
-        property: KAFKA_BOOTSTRAP_SERVERS

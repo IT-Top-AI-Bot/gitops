@@ -1,3 +1,5 @@
+kafkaBootstrapServers: "192.168.0.148:9092"
+
 connector:
   slotName: debezium_journal_dev
   publicationName: debezium_journal_dev_pub
