@@ -9,7 +9,9 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
     argocd-image-updater.argoproj.io/image-list: app=ghcr.io/it-top-ai-bot/config-server
     argocd-image-updater.argoproj.io/app.update-strategy: latest
-    argocd-image-updater.argoproj.io/app.helm.image-spec: image.repository:image.tag
+    argocd-image-updater.argoproj.io/app.allow-tags: regexp:^sha-[0-9a-f]+$
+    argocd-image-updater.argoproj.io/app.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/app.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-branch: main
 spec:
