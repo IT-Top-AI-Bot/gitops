@@ -1,6 +1,0 @@
-apiVersion: v2
-name: admin-server
-description: Helm chart for Spring Boot Admin Server
-type: application
-version: 0.1.0
-appVersion: "latest"
