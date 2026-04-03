@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: image.repository
+    value: ghcr.io/it-top-ai-bot/api-gateway
+    forcestring: true
+  - name: image.tag
+    value: sha-b13e6a6
+    forcestring: true
