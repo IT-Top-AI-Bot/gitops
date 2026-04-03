@@ -23,16 +23,20 @@ resources:
     cpu: "250m"
     memory: "512Mi"
   limits:
-    cpu: "1000m"
     memory: "2Gi"
 
 # Нечувствительная конфигурация приложения
 config:
-  springProfile: "dev"
+  springProfile: "dev,kubernetes"
   serverPort: "8080"
   journal:
     baseUrl: "https://msapi.top-academy.ru/api/v2"
     syncInterval: "3600000"
+  configServer:
+    host: "config-server-dev.dev.svc.cluster.local"
+    port: "8080"
+  otel:
+    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
 
 # Путь к секретам в Vault (KV v2 mount: secret)
 # Итоговый путь: secret/data/dev/journal-service

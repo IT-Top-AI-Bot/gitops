@@ -22,6 +22,21 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        - name: wait-for-config-server
+          image: busybox:1.36
+          envFrom:
+            - configMapRef:
+                name: {{ include "journal-service.fullname" . }}-config
+          command:
+            - sh
+            - -c
+            - |
+              until wget -qO- http://${CONFIG_SERVER_HOST}:${CONFIG_SERVER_PORT}/actuator/health 2>/dev/null | grep -q '"status":"UP"'; do
+                echo "Waiting for config-server at ${CONFIG_SERVER_HOST}:${CONFIG_SERVER_PORT}..."
+                sleep 3
+              done
+              echo "Config-server is UP"
       containers:
         - name: journal-service
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

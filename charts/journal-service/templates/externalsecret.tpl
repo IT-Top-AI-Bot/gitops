@@ -66,11 +66,27 @@ spec:
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: KAFKA_BOOTSTRAP_SERVERS
-    - secretKey: EUREKA_SERVER_URL
-      remoteRef:
-        key: {{ .Values.vault.secretPath }}
-        property: EUREKA_SERVER_URL
     - secretKey: ENCRYPTION_KEY
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: ENCRYPTION_KEY
+    - secretKey: SA_USERNAME
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: SA_USERNAME
+    - secretKey: SA_PASSWORD
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: SA_PASSWORD
+    - secretKey: APPLICATION_KEY
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: APPLICATION_KEY
+    - secretKey: CONFIG_SERVER_USERNAME
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: CONFIG_SERVER_USERNAME
+    - secretKey: CONFIG_SERVER_PASSWORD
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: CONFIG_SERVER_PASSWORD
