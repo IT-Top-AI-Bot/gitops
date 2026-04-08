@@ -13,11 +13,15 @@ config:
   webhookHost: "https://dev-bot.actimate.ru"
   proxyHost: "192.168.0.148"
   proxyPort: "7890"
+  configServer:
+    host: "config-server-dev.dev.svc.cluster.local"
+    port: "8888"
+  otel:
+    endpoint: "http://192.168.0.160:4318"
 
 resources:
   requests:
     cpu: "100m"
     memory: "256Mi"
   limits:
-    cpu: "500m"
     memory: "512Mi"

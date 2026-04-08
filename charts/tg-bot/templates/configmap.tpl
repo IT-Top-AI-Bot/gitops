@@ -12,3 +12,6 @@ data:
   TELEGRAM_BOT_WEBHOOK_HOST: {{ .Values.config.webhookHost | quote }}
   PROXY_HOST: {{ .Values.config.proxyHost | quote }}
   PROXY_PORT: {{ .Values.config.proxyPort | quote }}
+  CONFIG_SERVER_HOST: {{ .Values.config.configServer.host | quote }}
+  CONFIG_SERVER_PORT: {{ .Values.config.configServer.port | quote }}
+  OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.config.otel.endpoint | quote }}

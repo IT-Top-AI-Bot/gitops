@@ -26,4 +26,16 @@ spec:
       remoteRef:
         key: {{ .Values.vault.secretPath }}
         property: TELEGRAM_WEBHOOK_SECRET_TOKEN
+    - secretKey: CONFIG_SERVER_USERNAME
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: CONFIG_SERVER_USERNAME
+    - secretKey: CONFIG_SERVER_PASSWORD
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: CONFIG_SERVER_PASSWORD
+    - secretKey: ADMIN_TELEGRAM_IDS
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: ADMIN_TELEGRAM_IDS
 
