@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/it-top-ai-bot/ai-executor
+  pullPolicy: Always
+  tag: "latest"
+
+ingress:
+  enabled: false
+
+config:
+  configServer:
+    host: "config-server-dev.dev.svc.cluster.local:8080"
+  otel:
+    endpoint: "http://192.168.0.160:4318"
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512Mi"
+  limits:
+    memory: "2Gi"
