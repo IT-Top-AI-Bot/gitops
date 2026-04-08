@@ -49,8 +49,8 @@ data:
     debezium.sink.kafka.producer.value.serializer=org.apache.kafka.common.serialization.StringSerializer
     debezium.format.value=json
     debezium.format.value.schemas.enable=false
-    debezium.format.key=json
-    debezium.format.key.schemas.enable=false
+    debezium.format.key=simplestring
+    debezium.format.header=simplestring
 
     # --- Quarkus HTTP (health/metrics) ---
     quarkus.http.port=8080
