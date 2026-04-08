@@ -5,6 +5,7 @@ connector:
   publicationName: journal_outbox_pub
   topicPrefix: journal
   tableIncludeList: "public.outbox_event"
+  outboxTopicReplacement: "homework-execution-dev"
   snapshotMode: initial
 
 vault:
