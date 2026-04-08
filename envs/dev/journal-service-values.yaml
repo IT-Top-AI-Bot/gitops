@@ -10,9 +10,6 @@ ingress:
 
 config:
   springProfile: "dev,kubernetes"
-  redis:
-    host: "redis-master.dev.svc.cluster.local"
-    port: "6379"
   journal:
     baseUrl: "https://msapi.top-academy.ru/api/v2"
     syncInterval: "3600000"
