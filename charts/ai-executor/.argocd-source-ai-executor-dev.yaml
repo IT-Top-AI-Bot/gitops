@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: image.repository
+    value: ghcr.io/it-top-ai-bot/ai-executor
+    forcestring: true
+  - name: image.tag
+    value: sha-4852871
+    forcestring: true
