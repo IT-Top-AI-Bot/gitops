@@ -40,7 +40,7 @@ data:
     debezium.transforms.outbox.table.field.event.payload=payload
     debezium.transforms.outbox.table.fields.additional.placement=event_type:header:eventType,aggregate_type:header:aggregateType,aggregate_id:header:aggregateId,trace_context:header:traceparent
     debezium.transforms.outbox.route.tombstone.on.empty.payload=false
-    debezium.transforms.outbox.expand.json.payload=true
+    debezium.transforms.outbox.table.expand.json.payload=true
 
     # --- Sink: Kafka ---
     debezium.sink.type=kafka
