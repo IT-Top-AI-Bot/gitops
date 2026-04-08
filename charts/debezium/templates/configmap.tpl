@@ -34,7 +34,6 @@ data:
     debezium.transforms=outbox
     debezium.transforms.outbox.type=io.debezium.transforms.outbox.EventRouter
     debezium.transforms.outbox.route.by.field=topic
-    debezium.transforms.outbox.route.topic.replacement=\${routedByValue}
     debezium.transforms.outbox.table.field.event.id=id
     debezium.transforms.outbox.table.field.event.key=key
     debezium.transforms.outbox.table.field.event.payload=payload
