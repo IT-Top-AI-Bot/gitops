@@ -14,18 +14,26 @@ spec:
     name: {{ include "ai-executor.fullname" . }}-secrets
     creationPolicy: Owner
   data:
-    - secretKey: DB_URL
+    - secretKey: DATABASE_HOST
       remoteRef:
         key: {{ .Values.vault.secretPath }}
-        property: DB_URL
-    - secretKey: DB_USERNAME
+        property: DATABASE_HOST
+    - secretKey: DATABASE_PORT
       remoteRef:
         key: {{ .Values.vault.secretPath }}
-        property: DB_USERNAME
-    - secretKey: DB_PASSWORD
+        property: DATABASE_PORT
+    - secretKey: DATABASE_NAME
       remoteRef:
         key: {{ .Values.vault.secretPath }}
-        property: DB_PASSWORD
+        property: DATABASE_NAME
+    - secretKey: DATABASE_USERNAME
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: DATABASE_USERNAME
+    - secretKey: DATABASE_PASSWORD
+      remoteRef:
+        key: {{ .Values.vault.secretPath }}
+        property: DATABASE_PASSWORD
     - secretKey: KAFKA_BOOTSTRAP_SERVERS
       remoteRef:
         key: {{ .Values.vault.secretPath }}
