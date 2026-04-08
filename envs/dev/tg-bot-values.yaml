@@ -15,7 +15,7 @@ config:
   proxyPort: "7890"
   configServer:
     host: "config-server-dev.dev.svc.cluster.local"
-    port: "8888"
+    port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"
 
