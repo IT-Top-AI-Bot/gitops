@@ -1,10 +1,10 @@
 kafkaBootstrapServers: "192.168.0.219:9092"
 
 connector:
-  slotName: debezium_journal_dev
-  publicationName: debezium_journal_dev_pub
+  slotName: journal_outbox_slot
+  publicationName: journal_outbox_pub
   topicPrefix: journal
-  tableIncludeList: "public.homework_execution"
+  tableIncludeList: "public.outbox_event"
   snapshotMode: initial
 
 vault:

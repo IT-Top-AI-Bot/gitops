@@ -30,11 +30,24 @@ data:
     debezium.source.offset.storage=org.apache.kafka.connect.storage.FileOffsetBackingStore
     debezium.source.offset.storage.file.filename=/debezium/data/offsets.dat
 
+    # --- Outbox EventRouter transform ---
+    debezium.transforms=outbox
+    debezium.transforms.outbox.type=io.debezium.transforms.outbox.EventRouter
+    debezium.transforms.outbox.route.by.field=topic
+    debezium.transforms.outbox.route.topic.replacement=${routedByValue}
+    debezium.transforms.outbox.table.field.event.id=id
+    debezium.transforms.outbox.table.field.event.key=key
+    debezium.transforms.outbox.table.field.event.payload=payload
+    debezium.transforms.outbox.table.fields.additional.placement=event_type:header:eventType,aggregate_type:header:aggregateType,aggregate_id:header:aggregateId,trace_context:header:traceparent
+    debezium.transforms.outbox.route.tombstone.on.empty.payload=false
+
     # --- Sink: Kafka ---
     debezium.sink.type=kafka
     debezium.sink.kafka.producer.bootstrap.servers={{ .Values.kafkaBootstrapServers }}
     debezium.sink.kafka.producer.key.serializer=org.apache.kafka.common.serialization.StringSerializer
     debezium.sink.kafka.producer.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+    debezium.format.value=json
+    debezium.format.key=json
 
     # --- Quarkus HTTP (health/metrics) ---
     quarkus.http.port=8080
