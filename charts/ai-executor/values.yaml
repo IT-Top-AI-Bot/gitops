@@ -31,14 +31,8 @@ config:
   s3Bucket: "homeworks-solutions"
   mistralModel: "mistral-medium-latest"
   mistralVisionModel: "mistral-medium-latest"
-  mistral:
-    proxyHost: "192.168.0.148"
-    proxyPort: "7890"
   geminiModel: "gemini-3.1-flash-lite-preview"
   geminiVisionModel: "gemini-3.1-flash-lite-preview"
-  gemini:
-    proxyHost: "192.168.0.221"
-    proxyPort: "7890"
   configServer:
     host: "config-server-dev.dev.svc.cluster.local:8080"
   otel:
