@@ -50,8 +50,7 @@ data:
     debezium.format.value=json
     debezium.format.value.schemas.enable=false
     debezium.format.key=simplestring
-    debezium.format.header=json
-    debezium.format.header.schemas.enable=false
+    debezium.format.header=simplestring
 
     # --- Quarkus HTTP (health/metrics) ---
     quarkus.http.port=8080
