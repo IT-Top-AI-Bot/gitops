@@ -35,7 +35,6 @@ data:
         "transforms.outbox.table.field.event.payload": "payload",
         "transforms.outbox.table.fields.additional.placement": "event_type:header:eventType,aggregate_type:header:aggregateType,aggregate_id:header:aggregateId,trace_context:header:traceparent",
         "transforms.outbox.route.tombstone.on.empty.payload": "false",
-        "transforms.outbox.table.expand.json.payload": "true",
         "value.converter": "org.apache.kafka.connect.storage.StringConverter",
         "header.converter": "org.apache.kafka.connect.storage.StringConverter"
       }
