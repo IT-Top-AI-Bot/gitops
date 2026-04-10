@@ -1,23 +1,29 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/debezium/server
+  repository: debezium/connect
   pullPolicy: IfNotPresent
-  tag: "3.0"
+  tag: "3.0.0.Final"
 
 resources:
   requests:
     cpu: "100m"
-    memory: "256Mi"
-  limits:
     memory: "512Mi"
+  limits:
+    memory: "1Gi"
 
 # Kafka bootstrap servers — not a secret, set directly per environment
 kafkaBootstrapServers: ""
 
-# Non-sensitive Debezium source config
+# Kafka Connect worker topic names
+kafka:
+  groupId: "debezium-journal"
+  configStorageTopic: "debezium-journal-configs"
+  offsetStorageTopic: "debezium-journal-offsets"
+  statusStorageTopic: "debezium-journal-statuses"
+
+# Non-sensitive Debezium connector config
 connector:
-  # PostgreSQL source
   pluginName: pgoutput
   slotName: journal_outbox_slot
   publicationName: journal_outbox_pub
@@ -27,15 +33,10 @@ connector:
   snapshotMode: initial
   heartbeatIntervalMs: "10000"
 
-
 # Vault secret path for sensitive values:
 # DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 vault:
   secretPath: "dev/debezium"
-
-persistence:
-  size: 100Mi
-  storageClass: ""  # uses cluster default
 
 secretStore:
   name: "vault-backend"

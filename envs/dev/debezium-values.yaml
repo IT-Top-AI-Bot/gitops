@@ -1,5 +1,11 @@
 kafkaBootstrapServers: "192.168.0.219:9092"
 
+kafka:
+  groupId: "debezium-journal"
+  configStorageTopic: "debezium-journal-configs"
+  offsetStorageTopic: "debezium-journal-offsets"
+  statusStorageTopic: "debezium-journal-statuses"
+
 connector:
   slotName: journal_outbox_slot
   publicationName: journal_outbox_pub

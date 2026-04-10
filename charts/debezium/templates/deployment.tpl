@@ -18,43 +18,59 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.tpl") . | sha256sum }}
     spec:
-      volumes:
-        - name: config
-          configMap:
-            name: {{ include "debezium.fullname" . }}-config
-        - name: data
-          persistentVolumeClaim:
-            claimName: {{ include "debezium.fullname" . }}-data
       containers:
         - name: debezium
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: 8080
+            - name: rest
+              containerPort: 8083
               protocol: TCP
-          # Sensitive values injected as env vars; referenced in application.properties via ${VAR}
+          # DB credentials injected from ExternalSecret; referenced in connector.json via ${env:VAR}
           envFrom:
             - secretRef:
                 name: {{ include "debezium.fullname" . }}-secrets
-          volumeMounts:
-            - name: config
-              mountPath: /debezium/config/application.properties
-              subPath: application.properties
-            - name: data
-              mountPath: /debezium/data
+          env:
+            # Kafka Connect worker config
+            - name: BOOTSTRAP_SERVERS
+              value: {{ .Values.kafkaBootstrapServers | quote }}
+            - name: GROUP_ID
+              value: {{ .Values.kafka.groupId | quote }}
+            - name: CONFIG_STORAGE_TOPIC
+              value: {{ .Values.kafka.configStorageTopic | quote }}
+            - name: OFFSET_STORAGE_TOPIC
+              value: {{ .Values.kafka.offsetStorageTopic | quote }}
+            - name: STATUS_STORAGE_TOPIC
+              value: {{ .Values.kafka.statusStorageTopic | quote }}
+            - name: CONFIG_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: OFFSET_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: STATUS_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: KEY_CONVERTER
+              value: org.apache.kafka.connect.storage.StringConverter
+            - name: VALUE_CONVERTER
+              value: org.apache.kafka.connect.json.JsonConverter
+            - name: VALUE_CONVERTER_SCHEMAS_ENABLE
+              value: "false"
+            # EnvVarConfigProvider — allows ${env:VAR} substitution in connector config
+            - name: CONNECT_CONFIG_PROVIDERS
+              value: env
+            - name: CONNECT_CONFIG_PROVIDERS_ENV_CLASS
+              value: org.apache.kafka.common.config.provider.EnvVarConfigProvider
           livenessProbe:
             httpGet:
-              path: /q/health/live
-              port: http
-            initialDelaySeconds: 30
+              path: /
+              port: rest
+            initialDelaySeconds: 60
             periodSeconds: 15
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /q/health/ready
-              port: http
-            initialDelaySeconds: 20
+              path: /connectors
+              port: rest
+            initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
           resources:
