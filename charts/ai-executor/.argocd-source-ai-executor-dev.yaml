@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/it-top-ai-bot/ai-executor
     forcestring: true
   - name: image.tag
-    value: sha-4852871
+    value: sha-7fcb846
     forcestring: true
