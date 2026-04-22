@@ -1,0 +1,6 @@
+replicaCount: 1
+
+image:
+  repository: wiremock/wiremock
+  tag: "3x-alpine"
+  pullPolicy: IfNotPresent

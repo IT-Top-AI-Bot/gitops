@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mock-journal-api
+description: WireMock stub for msapi.top-academy.ru (dev only)
+type: application
+version: 0.1.0
+appVersion: "3x"
