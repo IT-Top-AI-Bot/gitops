@@ -1,0 +1,10 @@
+externalSecretIgnoreDifferences:
+  enabled: true
+  managedFieldsManagers:
+    - external-secrets
+  jsonPointers:
+    - /spec/target/deletionPolicy
+  jqPathExpressions:
+    - .spec.data[]?.remoteRef.conversionStrategy
+    - .spec.data[]?.remoteRef.decodingStrategy
+    - .spec.data[]?.remoteRef.metadataPolicy

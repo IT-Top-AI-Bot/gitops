@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+  namespace: {{ .Release.Namespace }}
+data:
+  context: |
+    argocdUrl: {{ .Values.context.argocdUrl | quote }}
+    environment: {{ .Values.context.environment | quote }}
+{{- if .Values.services.telegram.enabled }}
+  service.telegram: |
+    token: {{ printf "$%s" .Values.services.telegram.tokenSecretKey }}
+{{- end }}
+  defaultTriggers: |
+{{ toYaml .Values.defaultTriggers | indent 4 }}
+{{- if .Values.subscriptions }}
+  subscriptions: |
+{{- range .Values.subscriptions }}
+    - recipients:
+{{- range .recipients }}
+        - {{ . | quote }}
+{{- end }}
+      triggers:
+{{- range .triggers }}
+        - {{ . | quote }}
+{{- end }}
+{{- if .selector }}
+      selector: {{ .selector | quote }}
+{{- end }}
+{{- end }}
+{{- end }}
+  trigger.on-deployed: |
+    - when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+      oncePer: app.status.operationState.syncResult.revision
+      send:
+        - app-deployed
+  trigger.on-health-degraded: |
+    - when: app.status.health.status == 'Degraded'
+      send:
+        - app-health-degraded
+  trigger.on-sync-failed: |
+    - when: app.status.operationState != nil and app.status.operationState.phase in ['Error', 'Failed']
+      send:
+        - app-sync-failed
+  trigger.on-sync-status-unknown: |
+    - when: app.status.sync.status == 'Unknown'
+      send:
+        - app-sync-status-unknown
+  template.app-deployed: |
+    email:
+      subject: "[ArgoCD][{{ .Values.context.environment }}] {{ "{{" }} .app.metadata.name {{ "}}" }} deployed"
+    message: |
+      [ArgoCD][{{ .Values.context.environment }}] Application {{ "{{" }} .app.metadata.name {{ "}}" }} deployed successfully.
+      Sync status: {{ "{{" }} .app.status.sync.status {{ "}}" }}
+      Health: {{ "{{" }} .app.status.health.status {{ "}}" }}
+      Revision: {{ "{{" }} .app.status.sync.revision {{ "}}" }}
+      URL: {{ .Values.context.argocdUrl }}/applications/{{ "{{" }} .app.metadata.name {{ "}}" }}
+  template.app-health-degraded: |
+    email:
+      subject: "[ArgoCD][{{ .Values.context.environment }}] {{ "{{" }} .app.metadata.name {{ "}}" }} degraded"
+    message: |
+      [ArgoCD][{{ .Values.context.environment }}] Application {{ "{{" }} .app.metadata.name {{ "}}" }} is degraded.
+      Sync status: {{ "{{" }} .app.status.sync.status {{ "}}" }}
+      Health: {{ "{{" }} .app.status.health.status {{ "}}" }}
+      URL: {{ .Values.context.argocdUrl }}/applications/{{ "{{" }} .app.metadata.name {{ "}}" }}
+  template.app-sync-failed: |
+    email:
+      subject: "[ArgoCD][{{ .Values.context.environment }}] {{ "{{" }} .app.metadata.name {{ "}}" }} sync failed"
+    message: |
+      [ArgoCD][{{ .Values.context.environment }}] Application {{ "{{" }} .app.metadata.name {{ "}}" }} sync failed.
+      Phase: {{ "{{" }} .app.status.operationState.phase {{ "}}" }}
+      Message: {{ "{{" }} .app.status.operationState.message {{ "}}" }}
+      URL: {{ .Values.context.argocdUrl }}/applications/{{ "{{" }} .app.metadata.name {{ "}}" }}
+  template.app-sync-status-unknown: |
+    email:
+      subject: "[ArgoCD][{{ .Values.context.environment }}] {{ "{{" }} .app.metadata.name {{ "}}" }} sync status unknown"
+    message: |
+      [ArgoCD][{{ .Values.context.environment }}] Application {{ "{{" }} .app.metadata.name {{ "}}" }} has unknown sync status.
+      Health: {{ "{{" }} .app.status.health.status {{ "}}" }}
+      URL: {{ .Values.context.argocdUrl }}/applications/{{ "{{" }} .app.metadata.name {{ "}}" }}
