@@ -3,7 +3,7 @@ context:
   environment: "shared"
 
 serviceAccount:
-  create: false
+  create: true
   name: "external-secrets"
 
 vault:
@@ -14,7 +14,7 @@ vault:
   secretPath: "shared/argocd-notifications"
 
 secretStore:
-  create: false
+  create: true
   name: "vault-backend"
   kind: "SecretStore"
 
