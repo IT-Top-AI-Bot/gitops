@@ -3,7 +3,7 @@ context:
   environment: "shared"
 
 serviceAccount:
-  create: true
+  create: false
   name: "external-secrets"
 
 vault:
@@ -14,13 +14,13 @@ vault:
   secretPath: "shared/argocd-notifications"
 
 secretStore:
-  create: true
+  create: false
   name: "vault-backend"
   kind: "SecretStore"
 
 services:
   telegram:
-    enabled: false
+    enabled: true
     secretName: "argocd-notifications-secret"
     tokenSecretKey: "telegram-token"
     vaultProperty: "TELEGRAM_TOKEN"
@@ -32,7 +32,14 @@ defaultTriggers:
   - on-sync-failed
   - on-sync-status-unknown
 
-subscriptions: [ ]
+subscriptions:
+  - recipients:
+      - "telegram:7730540142"
+    triggers:
+      - on-deployed
+      - on-sync-failed
+      - on-health-degraded
+    selector: "notifications=enabled"
 # Example:
 # subscriptions:
 #   - recipients:

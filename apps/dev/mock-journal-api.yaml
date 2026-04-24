@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: mock-journal-api-dev
   namespace: argocd
+  labels:
+    notifications: enabled
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
