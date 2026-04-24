@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/it-top-ai-bot/journal-service
     forcestring: true
   - name: image.tag
-    value: sha-9edcec6
+    value: sha-52ff270
     forcestring: true
