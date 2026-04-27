@@ -10,11 +10,12 @@ ingress:
 
 config:
   backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
+  journalServiceActuatorUrl: "http://journal-service-dev.dev.svc.cluster.local:8080"
   webhookHost: "https://dev-bot.actimate.ru"
   proxyHost: "192.168.0.148"
   proxyPort: "7890"
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local"
+    host: "config-server.infra.svc.cluster.local"
     port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"

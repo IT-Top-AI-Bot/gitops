@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 2
 
 image:
   repository: ghcr.io/it-top-ai-bot/api-gateway
@@ -10,7 +10,7 @@ ingress:
 
 config:
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local"
+    host: "config-server.infra.svc.cluster.local"
     port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"
@@ -21,3 +21,9 @@ resources:
     memory: "256Mi"
   limits:
     memory: "512Mi"
+
+probes:
+  startup:
+    path: /actuator/health
+    periodSeconds: 5
+    failureThreshold: 30

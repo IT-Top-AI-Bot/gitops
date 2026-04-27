@@ -1,0 +1,30 @@
+replicaCount: 2
+
+image:
+  repository: ghcr.io/it-top-ai-bot/config-server
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+config:
+  springProfile: "kubernetes"
+  adminServer:
+    url: ""
+    serviceBaseUrl: "http://config-server.infra.svc.cluster.local:8080"
+  otel:
+    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    memory: "512Mi"
+
+vault:
+  secretPath: "infra/config-server"
+
+networkPolicy:
+  enabled: true
+  allowedNamespaces:
+    - dev
+    - prod

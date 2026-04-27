@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: config-server-dev
+  name: config-server
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -22,10 +22,10 @@ spec:
     path: charts/config-server
     helm:
       valueFiles:
-        - ../../envs/dev/config-server-values.yaml
+        - ../../envs/config-server-values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev
+    namespace: infra
   syncPolicy:
     automated:
       prune: true

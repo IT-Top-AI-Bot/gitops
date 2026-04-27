@@ -14,19 +14,24 @@ service:
 
 ingress:
   enabled: false
+  className: "traefik"
+  host: ""
+  path: "/"
+  tls: false
 
 resources:
   requests:
     cpu: "100m"
     memory: "256Mi"
   limits:
+    cpu: "500m"
     memory: "512Mi"
 
 config:
   springProfile: "dev,kubernetes"
   serverPort: "8080"
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local"
+    host: "config-server.infra.svc.cluster.local"
     port: "8080"
   otel:
     endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
@@ -37,3 +42,19 @@ vault:
 secretStore:
   name: "vault-backend"
   kind: "SecretStore"
+
+probes:
+  startup:
+    path: /actuator/health
+    periodSeconds: 5
+    failureThreshold: 30
+  readiness:
+    path: /actuator/health/readiness
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    failureThreshold: 3
+  liveness:
+    path: /actuator/health/liveness
+    initialDelaySeconds: 30
+    periodSeconds: 15
+    failureThreshold: 3

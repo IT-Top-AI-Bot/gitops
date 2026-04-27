@@ -50,19 +50,25 @@ spec:
                 name: {{ include "api-gateway.fullname" . }}-config
             - secretRef:
                 name: {{ include "api-gateway.fullname" . }}-secrets
+          startupProbe:
+            httpGet:
+              path: {{ .Values.probes.startup.path }}
+              port: http
+            periodSeconds: {{ .Values.probes.startup.periodSeconds }}
+            failureThreshold: {{ .Values.probes.startup.failureThreshold }}
           livenessProbe:
             httpGet:
-              path: /actuator/health/liveness
+              path: {{ .Values.probes.liveness.path }}
               port: http
-            initialDelaySeconds: 30
-            periodSeconds: 15
-            failureThreshold: 3
+            initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+            failureThreshold: {{ .Values.probes.liveness.failureThreshold }}
           readinessProbe:
             httpGet:
-              path: /actuator/health/readiness
+              path: {{ .Values.probes.readiness.path }}
               port: http
-            initialDelaySeconds: 15
-            periodSeconds: 10
-            failureThreshold: 3
+            initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+            failureThreshold: {{ .Values.probes.readiness.failureThreshold }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

@@ -10,8 +10,10 @@ ingress:
 
 config:
   s3Bucket: "homeworks-solutions-dev"
+  homeworkDownloadAllowedHosts: "localhost,127.0.0.1,*.top-academy.ru,s3.actimate.ru"
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local:8080"
+    host: "config-server.infra.svc.cluster.local"
+    port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"
 

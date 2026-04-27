@@ -23,14 +23,17 @@ resources:
     cpu: "250m"
     memory: "512Mi"
   limits:
+    cpu: "1000m"
     memory: "2Gi"
 
 config:
   springProfile: "dev,kubernetes"
   serverPort: "8080"
   s3Bucket: "homeworks-solutions"
+  homeworkDownloadAllowedHosts: "localhost,127.0.0.1,*.top-academy.ru"
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local:8080"
+    host: "config-server.infra.svc.cluster.local"
+    port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"
 

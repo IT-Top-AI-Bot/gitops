@@ -14,7 +14,7 @@ config:
     baseUrl: "https://msapi.top-academy.ru/api/v2"
     syncInterval: "3600000"
   configServer:
-    host: "config-server-dev.dev.svc.cluster.local"
+    host: "config-server.infra.svc.cluster.local"
     port: "8080"
   otel:
     endpoint: "http://192.168.0.160:4318"
