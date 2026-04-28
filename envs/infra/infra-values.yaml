@@ -3,3 +3,7 @@ vault:
   mountPath: "secret"
   kubernetesMountPath: "kubernetes"
   role: "infra-role"
+
+config:
+  otel:
+    endpoint: "http://192.168.0.160:4318"
