@@ -24,7 +24,7 @@ config:
   springProfile: "dev,kubernetes"
   serverPort: "8080"
   otel:
-    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
+    endpoint: "http://192.168.0.160:4318"
 
 vault:
   secretPath: "dev/config-server"
