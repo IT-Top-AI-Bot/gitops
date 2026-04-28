@@ -32,8 +32,8 @@ spec:
             - sh
             - -c
             - |
-              until wget -qO- http://${CONFIG_SERVER_HOST}/actuator/health 2>/dev/null | grep -q '"status":"UP"'; do
-                echo "Waiting for config-server at ${CONFIG_SERVER_HOST}..."
+              until wget -qO- http://${CONFIG_SERVER_HOST}:${CONFIG_SERVER_PORT}/actuator/health 2>/dev/null | grep -q '"status":"UP"'; do
+                echo "Waiting for config-server at ${CONFIG_SERVER_HOST}:${CONFIG_SERVER_PORT}..."
                 sleep 3
               done
               echo "Config-server is UP"
