@@ -10,6 +10,5 @@ data:
   SERVER_PORT: {{ .Values.config.serverPort | quote }}
   JOURNAL_BASE_URL: {{ .Values.config.journal.baseUrl | quote }}
   JOURNAL_SYNC_INTERVAL: {{ .Values.config.journal.syncInterval | quote }}
-  CONFIG_SERVER_HOST: {{ .Values.config.configServer.host | quote }}
-  CONFIG_SERVER_PORT: {{ .Values.config.configServer.port | quote }}
+  CONFIG_SERVER_HOST: {{ printf "%s:%s" .Values.config.configServer.host (.Values.config.configServer.port | toString) | quote }}
   OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.config.otel.endpoint | quote }}
