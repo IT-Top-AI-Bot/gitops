@@ -1,0 +1,5 @@
+vault:
+  address: "https://vault.actimate.ru"
+  mountPath: "secret"
+  kubernetesMountPath: "kubernetes"
+  role: "infra-role"
