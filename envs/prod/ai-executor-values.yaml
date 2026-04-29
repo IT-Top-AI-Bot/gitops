@@ -9,7 +9,7 @@ ingress:
 
 config:
   springProfile: "prod,kubernetes"
-  s3Bucket: "homeworks-solutions-prod"
+  s3Bucket: "homeworks-solutions"
   homeworkDownloadAllowedHosts: "localhost,127.0.0.1,*.top-academy.ru,s3.actimate.ru"
   configServer:
     host: "config-server.infra.svc.cluster.local"
