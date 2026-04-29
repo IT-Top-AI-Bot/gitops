@@ -2,16 +2,16 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/it-top-ai-bot/tg-bot
-  pullPolicy: Always
-  tag: "sha-0f917ee"
+  pullPolicy: IfNotPresent
 
 ingress:
   enabled: false
 
 config:
-  backendBaseUrl: "http://api-gateway-dev.dev.svc.cluster.local:8080"
-  journalServiceActuatorUrl: "http://journal-service-dev.dev.svc.cluster.local:8080"
-  webhookHost: "https://dev-bot.actimate.ru"
+  springProfile: "prod,kubernetes"
+  backendBaseUrl: "http://api-gateway-prod.prod.svc.cluster.local:8080"
+  journalServiceActuatorUrl: "http://journal-service-prod.prod.svc.cluster.local:8080"
+  webhookHost: "https://bot.actimate.ru"
   proxyHost: "vpn.internal"
   proxyPort: "7890"
   configServer:
@@ -26,3 +26,6 @@ resources:
     memory: "256Mi"
   limits:
     memory: "512Mi"
+
+vault:
+  secretPath: "prod/tg-bot"

@@ -103,3 +103,20 @@ git push
 ```
 
 ArgoCD подхватит изменение автоматически (auto-sync включён).
+
+## ArgoCD Core Config
+
+Часть системной конфигурации ArgoCD управляется отдельным приложением `argocd-config`:
+
+- `apps/dev/argocd-config.yaml`
+- `charts/argocd-config/`
+- `envs/dev/argocd-config-values.yaml`
+
+Сейчас через него декларативно поддерживается правило diff customization для `ExternalSecret`, чтобы ArgoCD не показывал
+ложный `OutOfSync` из-за defaulted полей, которые дописывает `external-secrets` controller.
+
+Важно:
+
+- chart намеренно рендерит только один ключ в `argocd-cm`
+- приложение использует `ServerSideApply=true`
+- это позволяет не перетирать уже существующие ключи вроде `dex.config`

@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/it-top-ai-bot/api-gateway
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+
+config:
+  springProfile: "prod,kubernetes"
+  configServer:
+    host: "config-server.infra.svc.cluster.local"
+    port: "8080"
+  otel:
+    endpoint: "http://192.168.0.160:4318"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    memory: "512Mi"
+
+vault:
+  secretPath: "prod/api-gateway"

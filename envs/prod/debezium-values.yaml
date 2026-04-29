@@ -1,0 +1,18 @@
+kafkaBootstrapServers: "192.168.0.219:9092"
+
+kafka:
+  groupId: "debezium-journal-prod"
+  configStorageTopic: "debezium-journal-prod-configs"
+  offsetStorageTopic: "debezium-journal-prod-offsets"
+  statusStorageTopic: "debezium-journal-prod-statuses"
+
+connector:
+  slotName: journal_outbox_slot_prod
+  publicationName: journal_outbox_pub_prod
+  topicPrefix: "journal"
+  tableIncludeList: "public.outbox_event"
+  outboxTopicReplacement: "homework-execution"
+  snapshotMode: initial
+
+vault:
+  secretPath: "prod/debezium"

@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/it-top-ai-bot/ai-executor
+  pullPolicy: IfNotPresent
+  tag: "sha-REPLACE_ME"
+
+ingress:
+  enabled: false
+
+config:
+  springProfile: "prod,kubernetes"
+  s3Bucket: "homeworks-solutions-prod"
+  homeworkDownloadAllowedHosts: "localhost,127.0.0.1,*.top-academy.ru,s3.actimate.ru"
+  configServer:
+    host: "config-server.infra.svc.cluster.local"
+    port: "8080"
+  otel:
+    endpoint: "http://otel-collector.monitoring.svc.cluster.local:4318"
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512Mi"
+  limits:
+    memory: "2Gi"
+
+vault:
+  secretPath: "prod/ai-executor"
