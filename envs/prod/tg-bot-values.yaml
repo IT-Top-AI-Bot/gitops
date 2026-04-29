@@ -12,7 +12,7 @@ config:
   backendBaseUrl: "http://api-gateway-prod.prod.svc.cluster.local:8080"
   journalServiceActuatorUrl: "http://journal-service-prod.prod.svc.cluster.local:8080"
   webhookHost: "https://bot.actimate.ru"
-  proxyHost: "vpn.internal"
+  proxyHost: "192.168.0.148"
   proxyPort: "7890"
   configServer:
     host: "config-server.infra.svc.cluster.local"
