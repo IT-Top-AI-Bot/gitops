@@ -16,3 +16,7 @@ connector:
 
 vault:
   secretPath: "prod/debezium"
+
+secretStore:
+  name: "vault-backend"
+  kind: "SecretStore"
