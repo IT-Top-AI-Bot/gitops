@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
     argocd-image-updater.argoproj.io/image-list: app=ghcr.io/it-top-ai-bot/api-gateway
-    argocd-image-updater.argoproj.io/app.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/app.update-strategy: latest
     argocd-image-updater.argoproj.io/app.allow-tags: regexp:^prod-sha-[0-9a-f]+$
     argocd-image-updater.argoproj.io/app.helm.image-name: image.repository
     argocd-image-updater.argoproj.io/app.helm.image-tag: image.tag
