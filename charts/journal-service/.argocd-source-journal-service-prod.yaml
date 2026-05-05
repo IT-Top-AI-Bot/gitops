@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/it-top-ai-bot/journal-service
     forcestring: true
   - name: image.tag
-    value: prod-2e26e5c
+    value: prod-3d5a46d
     forcestring: true
