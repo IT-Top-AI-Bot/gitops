@@ -29,7 +29,7 @@ data:
         "transforms": "outbox",
         "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
         "transforms.outbox.route.by.field": "topic",
-        "transforms.outbox.route.topic.replacement": "{{ .Values.connector.outboxTopicReplacement }}",
+        "transforms.outbox.route.topic.replacement": "${routedByValue}",
         "transforms.outbox.table.field.event.id": "id",
         "transforms.outbox.table.field.event.key": "key",
         "transforms.outbox.table.field.event.payload": "payload",
