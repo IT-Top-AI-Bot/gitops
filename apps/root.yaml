@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/IT-Top-AI-Bot/gitops
-    targetRevision: main
+    targetRevision: develop
     path: apps/dev
   destination:
     server: https://kubernetes.default.svc
