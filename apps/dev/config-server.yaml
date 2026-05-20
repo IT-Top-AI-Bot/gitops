@@ -18,7 +18,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/IT-Top-AI-Bot/gitops
-    targetRevision: develop
+    targetRevision: master
     path: charts/config-server
     helm:
       valueFiles:
