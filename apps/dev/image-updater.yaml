@@ -9,5 +9,5 @@ spec:
       useAnnotations: true
   writeBackConfig:
     gitConfig:
-      branch: develop
+      branch: master
     method: git
