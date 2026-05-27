@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd-image-updater.argoproj.io/image-list: config-server=ghcr.io/it-top-ai-bot/config-server
-    argocd-image-updater.argoproj.io/config-server.update-strategy: latest
+    argocd-image-updater.argoproj.io/config-server.update-strategy: newest-build
     argocd-image-updater.argoproj.io/config-server.allow-tags: regexp:^sha-[0-9a-f]+$
     argocd-image-updater.argoproj.io/config-server.helm.image-name: image.repository
     argocd-image-updater.argoproj.io/config-server.helm.image-tag: image.tag
