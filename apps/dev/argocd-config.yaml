@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/IT-Top-AI-Bot/gitops
-    targetRevision: master
+    targetRevision: develop
     path: charts/argocd-config
     helm:
       valueFiles:

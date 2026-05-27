@@ -1,0 +1,13 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: prod-apps
+  namespace: argocd
+spec:
+  applicationRefs:
+    - namePattern: '*-prod'
+      useAnnotations: true
+  writeBackConfig:
+    gitConfig:
+      branch: master
+    method: git
